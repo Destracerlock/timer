@@ -12,4 +12,3 @@ browser.storage.local.get({ soundOn: true }).then(({ soundOn }) => {
 soundCheckbox.addEventListener('change', () => {
   browser.storage.local.set({ soundOn: soundCheckbox.checked });
 });
-

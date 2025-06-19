@@ -30,15 +30,17 @@ function updateDisplay() {
 startBtn.addEventListener('click', () => {
   const duration = parseInt(minutesInput.value || '0', 10) * 60 +
                    parseInt(secondsInput.value || '0', 10);
-  browser.runtime.sendMessage({ command: 'start', duration });
+  browser.runtime.sendMessage({ command: 'start', duration }).then(() => {
+    updateDisplay();
+  });
 });
 
 resetBtn.addEventListener('click', () => {
-  browser.runtime.sendMessage({ command: 'reset' });
-  timeDisplay.textContent = '--:--';
+  browser.runtime.sendMessage({ command: 'reset' }).then(() => {
+    timeDisplay.textContent = '--:--';
+  });
 });
 
 // Poll every second to refresh displayed remaining time
 updateDisplay();
 setInterval(updateDisplay, 1000);
-

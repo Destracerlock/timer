@@ -15,6 +15,14 @@ browser.storage.local.get({ soundOn: true }).then(({ soundOn }) => {
   playSound = soundOn;
 });
 
+// Keep playSound in sync if user changes the option while the
+// service worker is running
+browser.storage.onChanged.addListener((changes, area) => {
+  if (area === 'local' && changes.soundOn) {
+    playSound = changes.soundOn.newValue;
+  }
+});
+
 // When extension starts up, check if a countdown alarm already exists
 browser.alarms.get('countdown').then(alarm => {
   if (alarm) {
