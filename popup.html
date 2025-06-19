@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Countdown Timer</title>
+  <style>
+    body { font-family: sans-serif; min-width: 200px; padding: 10px; }
+    label { display: block; margin-top: 8px; }
+    input { width: 60px; }
+    #timeDisplay { font-size: 24px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div id="timeDisplay">--:--</div>
+  <label>Minutes: <input type="number" id="minutes" min="0" value="2"></label>
+  <label>Seconds: <input type="number" id="seconds" min="0" max="59" value="0"></label>
+  <button id="start">Start</button>
+  <button id="reset">Reset</button>
+  <script src="popup.js"></script>
+</body>
+</html>
